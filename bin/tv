@@ -42,13 +42,13 @@
       echo 'tree is not installed'
 
       ERR="0"
-      stup --is-linux || ERR="1"   # only for Linux
+      tv ---is-linux || ERR="1"   # only for Linux
       if [ "$ERR" != "0" ]; then
          echo 'please install tree first!'
          exit 1
       fi
 
-      read -p "shall I create a ~/bin directory [Y/n]?" ANS
+      read -p "shall I install tree [Y/n]?" ANS
 		  if [ "$ANS" == "Y" ] || [ "$ANS" == "y" ] || [ "$ANS" == "" ]; then
           echo 'sudo apt install tree'
           sudo apt install tree || exit 1
