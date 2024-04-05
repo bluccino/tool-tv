@@ -38,7 +38,7 @@
 # check whether tree is installed and offer installation
 #===============================================================================
 
-   if [ "`which tree`" == "" ]; then
+   if [ "`which tv`" !=  "" ] && [ "`which tree`" == "" ]; then
       echo 'tree is not installed'
 
       ERR="0"
