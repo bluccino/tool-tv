@@ -46,6 +46,17 @@
    fi
 
 #===============================================================================
+# tv ---is-macos
+#===============================================================================
+
+   if [ "$1" == "---is-macos" ]; then
+      if [ "$(uname)" == "Darwin" ]; then
+         exit 0   # running on MacOs Darwin
+      fi
+      exit 1      # not on MacOs
+   fi
+
+#===============================================================================
 # check whether tree is installed and offer installation
 #===============================================================================
 
@@ -54,18 +65,28 @@
 
       ERR="0"
       tv ---is-linux || ERR="1"   # only for Linux
-      if [ "$ERR" != "0" ]; then
-         echo 'please install tree first!'
-         exit 1
+      if [ "$ERR" == "0" ]; then
+         read -p "shall I install tree [Y/n]?" ANS
+	   	   if [ "$ANS" == "Y" ] || [ "$ANS" == "y" ] || [ "$ANS" == "" ]; then
+            echo 'sudo apt install tree'
+            sudo apt install tree || exit 1
+		     fi
+         exit 0
       fi
 
-      read -p "shall I install tree [Y/n]?" ANS
-		  if [ "$ANS" == "Y" ] || [ "$ANS" == "y" ] || [ "$ANS" == "" ]; then
-          echo 'sudo apt install tree'
-          sudo apt install tree || exit 1
-		  fi
+      ERR="0"
+      tv ---is-macos || ERR="1"   # only for MacOS
+      if [ "$ERR" == "0" ]; then
+         read -p "shall I install tree [Y/n]?" ANS
+	   	   if [ "$ANS" == "Y" ] || [ "$ANS" == "y" ] || [ "$ANS" == "" ]; then
+            echo 'brew install tree'
+            sudo brew install tree || exit 1
+		     fi
+         exit 0
+      fi
 
-      exit 0
+      echo 'please install tree first!'
+      exit 1
    fi
 
 #===============================================================================
