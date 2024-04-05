@@ -185,6 +185,32 @@
    fi
 
 #===============================================================================
+# helper: tv ---r 'text arg'   # internal helper: echo in red color
+#         tv ---g 'text arg'   # internal helper: echo in green color
+#         tv ---y 'text arg'   # internal helper: echo in yellow color
+#===============================================================================
+
+   if [ "$1" == "---r" ]; then
+      printf "\x1b[31m";  shift;  echo "$*";  printf "\x1b[0m";  exit 0
+   fi
+
+   if [ "$1" == "---g" ]; then
+      printf "\x1b[32m";  shift;  echo "$*";  printf "\x1b[0m";  exit 0
+   fi
+
+   if [ "$1" == "---y" ]; then
+      printf "\x1b[33m";  shift;  echo "$*";  printf "\x1b[0m";  exit 0
+   fi
+
+   if [ "$1" == "---m" ]; then
+      printf "\x1b[35m";  shift;  echo "$*";  printf "\x1b[0m";  exit 0
+   fi
+
+   if [ "$1" == "---c" ]; then
+      printf "\x1b[36m";  shift;  echo "$*";  printf "\x1b[0m";  exit 0
+   fi
+
+#===============================================================================
 # cannot deal with anything else ...
 #===============================================================================
 
