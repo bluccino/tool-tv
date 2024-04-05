@@ -80,7 +80,7 @@
          read -p "shall I install tree [Y/n]?" ANS
 	   	   if [ "$ANS" == "Y" ] || [ "$ANS" == "y" ] || [ "$ANS" == "" ]; then
             echo 'brew install tree'
-            sudo brew install tree || exit 1
+            brew install tree || exit 1
 		     fi
          exit 0
       fi
