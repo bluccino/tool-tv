@@ -11,7 +11,7 @@ to download and install `tv`. The `curl` formula will create a folder `~/bin`
 (if not exist) and install `tv` in this directory.
 
 ```
-  curl -s https://raw.githubusercontent.com/bluccino/tool-tv/master/bin/tv >~tv; ~tv -!
+  curl -s https://raw.githubusercontent.com/bluccino/tool-tv/master/bin/tv >~tv; bash ~tv -!
 ```
 
 
